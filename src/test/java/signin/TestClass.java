@@ -49,23 +49,27 @@ public class TestClass extends RootClass {
         homePage = new HomePage(driver);
         signInPage = new SignInPage(driver);
         Thread.sleep(2000);
+        extentTest = extentReports.startTest("Verify login functionality", "Launch the application > Click sign btn " +
+                "> enter user name > enter password > click sign");
         landingPage.clickSignInBtn();
         signInPage.enterEmail(username);
         signInPage.enterPassword(password);
         signInPage.clickSignInBtn();
         boolean isBtnDisplayed = homePage.isSignOutBtnDisplayed();
+        SoftAssert softAssert = new SoftAssert();
         if (isBtnDisplayed) {
-            Assert.assertTrue(homePage.isSignOutBtnDisplayed());
+            softAssert.assertTrue(homePage.isSignOutBtnDisplayed());
             homePage.clickSignOutBtn();
         } else if (!username.contains("@")) {
-            Assert.assertEquals(signInPage.getMsg(), signInPage.INVALID_EMAIL_MSG);
+            softAssert.assertEquals(signInPage.getMsg(), signInPage.INVALID_EMAIL_MSG);
         } else if (username.contains("@")) {
             if (password.length() < 5) {
-                Assert.assertEquals(signInPage.getMsg(), signInPage.INVALID_PASSWD_SHORT);
+                softAssert.assertEquals(signInPage.getMsg(), signInPage.INVALID_PASSWD_SHORT);
             } else {
-                Assert.assertEquals(signInPage.getMsg(), signInPage.INVALID_PASSWD_MSG);
+                softAssert.assertEquals(signInPage.getMsg(), signInPage.INVALID_PASSWD_MSG);
             }
         }
+        softAssert.assertAll();
     }
 
     //before

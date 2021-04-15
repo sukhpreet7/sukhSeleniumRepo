@@ -31,7 +31,7 @@ public class RootClass {
     @BeforeClass(alwaysRun = true)
     public void launchBrowser() throws InterruptedException {
         String browser = "GC";
-        extentTest = extentReports.startTest("Launch Browser" + browser);
+        extentTest = extentReports.startTest("Launch Browser " + browser);
         frameworkUtils = new FrameworkUtils();
         switch (browser) {
             //GUI-mode
@@ -69,13 +69,11 @@ public class RootClass {
     public void returnTestResult(ITestResult result, ITestContext context) {
         String methodName = result.getName();
         String testName = result.getTestName();
-        extentTest = extentReports.startTest("Testing " + methodName.replace("", "_"));
 
         switch (result.getStatus())
         {
             case 1:
                 System.out.println("Test Passed");
-                frameworkUtils.addScreenshotToReport(methodName);
                 extentTest.log(LogStatus.PASS, "Test Passed");
                 frameworkUtils.addScreenshotToReport(methodName);
                 extentTest.log(LogStatus.INFO, screenshotPath);
