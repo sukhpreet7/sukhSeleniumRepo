@@ -44,7 +44,6 @@ public class LandingPage {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(createAnAccountBtn));
         createAnAccountBtn.click();
-
     }
 
     public void clickSignInBtn() {
