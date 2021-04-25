@@ -18,6 +18,7 @@ public class TestClass extends RootClass {
     LandingPage landingPage;
     SignInPage signInPage;
     HomePage homePage;
+
     PracticeAlertPage practiceAlertPage;
     WebDriver driver;
 

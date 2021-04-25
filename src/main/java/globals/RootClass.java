@@ -17,9 +17,11 @@ import utilities.FrameworkUtils;
 
 public class RootClass {
 
-    private static WebDriver driver;
+    public static WebDriver driver;
     boolean driverActive = true;
-    public String appURL = "http://automationpractice.com/index.php";
+    //public String appURL = "http://automationpractice.com/index.php";
+    public String appURL = "https://www.ontarioimmigration.gov.on.ca/oinp_index/resources/app/guest/index.html#!/";
+
     public static ExtentTest extentTest;
     public static String userDir = System.getProperty("user.dir");
     public static String testReportPath = userDir + "\\target\\FinalReport.html";
